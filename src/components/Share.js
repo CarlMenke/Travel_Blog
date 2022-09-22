@@ -27,7 +27,7 @@ const Share = (props) => {
             name: name,
             content: content,
             location: location,
-            likes:1
+            likes:0
         }
 
         props.fetchNewPost(options)

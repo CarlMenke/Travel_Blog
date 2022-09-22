@@ -55,7 +55,7 @@ export const loadAllPosts = () => {
 export const loadNewPost = (options) =>{
     return async (dispatch) => {
         try{
-            const post = await changeLikes(options)
+            const post = await createPost(options)
             await dispatch({
                 type:NEW_POST,
                 payload: post

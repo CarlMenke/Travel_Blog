@@ -68,9 +68,7 @@ export const createPost = async (options) => {
 export const changeLikes = async (bool,postId) => {
   try{
 
-    console.log(bool)
     const response = await axios.put('http://localhost:3001/api/updateLikes', {bool:bool, postId:postId})
-    console.log(response)
 
     return response.data
 

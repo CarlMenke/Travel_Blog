@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { connect } from "react-redux"
-import { loadNewLikes } from "../store/actions/TravelActions"
+import { loadNewLikes , loadAllPosts} from "../store/actions/TravelActions"
 
 const mapStatetoProps = ({ travelState }) =>{
     return { travelState }
@@ -8,7 +8,8 @@ const mapStatetoProps = ({ travelState }) =>{
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        fetchLikes: async (bool,postId) => await dispatch(loadNewLikes(bool,postId))
+        fetchLikes: async (bool,postId) => await dispatch(loadNewLikes(bool,postId)),
+        fetchPosts: async () => await dispatch(loadAllPosts()),
     }
 }
 
@@ -22,6 +23,7 @@ const ShareCard = (props) => {
 
     const handleLike = async (bool, postId) =>{
         await props.fetchLikes(bool, postId)
+        await props.fetchPosts()
     }
 
     return (
