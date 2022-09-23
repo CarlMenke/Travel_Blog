@@ -19,12 +19,12 @@ export const getDetailsById = async (id) => {
     }
   };
     const response = await axios.get('https://hotels4.p.rapidapi.com/properties/get-details', hotelOptions);
-
     return response.data;
 }
 
 export const getInformationByName = async (place) => {
   try{
+
     const options = {
         method: 'GET',
         url: 'https://hotels4.p.rapidapi.com/locations/v2/search',
@@ -34,46 +34,71 @@ export const getInformationByName = async (place) => {
           'X-RapidAPI-Host': 'hotels4.p.rapidapi.com'
         }
       };
-
       const response = await axios.get('https://hotels4.p.rapidapi.com/locations/v2/search', options);
-
       return (response.data.suggestions[1].entities)
 
     }catch (error){
+
       throw error
+
     }
 }
 
 export const getAllPosts = async () => {
-  try{
-      const response = await axios.get('http://localhost:3001/api/allPosts');
 
+  try{
+
+      const response = await axios.get('http://localhost:3001/api/allPosts');
       return (response.data)
 
     }catch (error){
+
       throw error
+
     }
 }
 
 export const createPost = async (options) => {
-  try{
-    const response = await axios.post('http://localhost:3001/api/createPost', {...options})
 
+  try{
+
+    const response = await axios.post('http://localhost:3001/api/createPost', {...options})
     return response.data
+
   }catch(error){
+
     throw error
+
   }
 }
 
 export const changeLikes = async (bool,postId) => {
+
   try{
 
     const response = await axios.put('http://localhost:3001/api/updateLikes', {bool:bool, postId:postId})
-
     return response.data
 
   }catch(error){
+
     throw error
+
+  }
+}
+
+export const createComment = async (name, content, post_id) =>{
+
+  try{
+    console.log('here')
+
+    const response = await axios.post('http://localhost:3001/api/createComment', {name:name, content:content, post_id:post_id})
+    console.log('response in create comment', response.data)
+    return response.data
+
+  }catch(error){
+
+    throw error
+
   }
 }
 

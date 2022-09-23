@@ -1,4 +1,4 @@
-import { GET_HOTELS_BY_NAME, SET_EXPLORE_PLACE, GET_DETIALS_FROM_ID , GET_POSTS,NEW_POST,CHANGE_LIKES } from '../types'
+import { GET_HOTELS_BY_NAME, SET_EXPLORE_PLACE, GET_DETIALS_FROM_ID , GET_POSTS,NEW_POST,CHANGE_LIKES, CREATE_COMMENT } from '../types'
 
 const initialState = {
     exploreItems : [],
@@ -23,6 +23,7 @@ const TravelReducer = ( state  = initialState , action) => {
             return {...state, shareItems: action.payload}
         case NEW_POST:
             return {...state, shareItems: [...state.shareItems, action.payload] }
+        case CREATE_COMMENT:
         case CHANGE_LIKES:
             return {...state, shareItems: [...state.shareItems]}
         default: 

@@ -1,5 +1,5 @@
-import { getInformationByName, getDetailsById, getAllPosts, createPost, changeLikes } from "../../services/TravelServices";
-import { GET_HOTELS_BY_NAME, SET_EXPLORE_PLACE,GET_DETIALS_FROM_ID, GET_POSTS,NEW_POST,CHANGE_LIKES } from '../types'
+import { getInformationByName, getDetailsById, getAllPosts, createPost, changeLikes, createComment } from "../../services/TravelServices";
+import { GET_HOTELS_BY_NAME, SET_EXPLORE_PLACE,GET_DETIALS_FROM_ID, GET_POSTS,NEW_POST,CHANGE_LIKES,CREATE_COMMENT } from '../types'
 
 export const loadInformationByName = (place) =>{
     return async (dispatch) => {
@@ -76,6 +76,22 @@ export const loadNewLikes = (bool,postId) =>{
                 payload: post
             })
         }catch (error){
+            throw error
+        }
+    }
+}
+
+export const loadNewComment = (name, content, post_id) => {
+    console.log('here')
+    return async (dispatch) =>{
+        try{
+            const comment = await createComment(name, content, post_id)
+            console.log(comment)
+            await dispatch({
+                type:CREATE_COMMENT,
+                payload:comment
+            })
+        }catch(error){
             throw error
         }
     }
